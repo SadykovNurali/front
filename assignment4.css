@@ -1,0 +1,113 @@
+/* Assignment 4 – styles for builder.html and order.html (style.css is not modified) */
+
+/* Task 4: smooth background change */
+body { transition: background-color 0.6s ease; }
+.color-controls { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; }
+
+/* Task 5: date & time block */
+.datetime-box {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-top: .5rem;
+    padding: .6rem 1rem;
+    background: snow;
+    border-left: 5px solid darkblue;
+    border-radius: 6px;
+}
+.datetime-box .dt-label { font-size: .8rem; color: #59636e; }
+.datetime-box strong { color: midnightblue; font-size: 1.05rem; font-variant-numeric: tabular-nums; }
+
+/* Task 2: accordion */
+.faq-item {
+    border: 1px solid #dbe5ee;
+    border-radius: 8px;
+    margin-bottom: .6rem;
+    overflow: hidden;
+    background: #fff;
+}
+.faq-question {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: .9rem 1.1rem;
+    background: snow;
+    border: 0;
+    text-align: left;
+    font-size: 1rem;
+    font-weight: 700;
+    color: midnightblue;
+    cursor: pointer;
+    transition: background-color .2s ease;
+}
+.faq-question:hover { background: #eef3fb; }
+.faq-icon {
+    flex: none;
+    width: 26px;
+    height: 26px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: darkblue;
+    color: #fff;
+    line-height: 1;
+    transition: transform .3s ease;
+}
+.faq-item.open .faq-icon { transform: rotate(45deg); }   /* "+" becomes "×" */
+.faq-answer {
+    max-height: 0;               /* hidden by default */
+    overflow: hidden;
+    transition: max-height .35s ease;
+}
+.faq-item.open .faq-answer { max-height: 300px; }   /* open: answer is shown */
+.faq-answer-inner { padding: .9rem 1.1rem; }
+.faq-answer-inner p { margin: 0; }
+
+/* Task 3: popup */
+.popup-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background: rgba(0, 0, 0, .55);
+    opacity: 0;
+    visibility: hidden;          /* hidden by default */
+    transition: opacity .25s ease, visibility .25s ease;
+}
+.popup-overlay.open { opacity: 1; visibility: visible; }
+.popup-box {
+    position: relative;
+    width: 100%;
+    max-width: 460px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 1.5rem;
+    background: #fff;
+    border-top: 5px solid darkblue;
+    border-radius: 12px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, .3);
+    transform: translateY(20px) scale(.97);
+    transition: transform .25s ease;
+}
+.popup-overlay.open .popup-box { transform: none; }
+.popup-close {
+    position: absolute;
+    top: .4rem;
+    right: .8rem;
+    background: none;
+    border: 0;
+    font-size: 2rem;
+    line-height: 1;
+    color: #59636e;
+    cursor: pointer;
+}
+.popup-close:hover { color: crimson; }
+
+@media (prefers-reduced-motion: reduce) {
+    body, .faq-answer, .faq-icon, .popup-overlay, .popup-box { transition: none; }
+}
