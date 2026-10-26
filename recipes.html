@@ -60,6 +60,8 @@
                 </div>
             </div>
 
+            <p id="recipe-count" class="recipe-count" aria-live="polite"></p>
+
             <div class="row g-4" id="recipe-list">
                 <div class="col-12 col-md-6 col-lg-4 recipe-item" data-category="breakfast">
                     <article class="card fc-card h-100">
@@ -153,6 +155,11 @@
                 </div>
             </div>
             <p id="no-recipes" class="text-center text-secondary mt-4 d-none">No recipes in this category yet.</p>
+
+            <div class="text-center mt-4">
+                <button type="button" class="btn btn-outline-success px-4" id="load-more-btn">Load more recipes</button>
+                <p id="load-status" class="small text-secondary mt-2 mb-0" aria-live="polite"></p>
+            </div>
         </div>
     </section>
 
